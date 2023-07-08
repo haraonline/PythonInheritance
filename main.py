@@ -12,9 +12,9 @@
 #
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
-# inheratance
+# inheritance
 class Animal:
-    def __init__(self, name, age, favorite_food):
+    def __init__(self, name: str, age: int, favorite_food: str):
         self.name = name
         self.age = age
         self.favorite_food = favorite_food
@@ -24,6 +24,9 @@ class Animal:
 
     def sleep(self):
         print(f'{self.name}, aged {self.age} is sleeping')
+
+    def move(self):
+        print(f'{self.name}, aged {self.age} is moving at 10 km/h')
 
 
 class Dog(Animal):
@@ -36,13 +39,51 @@ class Cat(Animal):
         print(f'{self.name}, aged {self.age} is meowing')
 
 
+class panther(Animal):
+    def roar(self):
+        print(f'{self.name}, aged {self.age} is roaring')
+
+    def move(self):
+        print(f'{self.name}, aged {self.age} is moving at 80 km/h')
+
+
+class Owl(Animal):
+    def __init__(self, name, age, favorite_food, turn_head_360):
+        super().__init__(name, age, favorite_food)
+        self.turn_head_360 = turn_head_360
+
+    def sleep(self):
+        super().sleep()
+        print("am also doing some important things while am sleeping ...")
+
+    def move(self):
+        print(f'{self.name}, aged {self.age} is flying at 100 km/h')
+
+
 dog = Dog('Rex', 3, 'meat')
 dog.eat()
 dog.sleep()
 dog.bark()
+dog.move()
+print('------------------')
 
 cat = Cat('Tom', 5, 'fish')
 cat.eat()
 cat.sleep()
 cat.meow()
+cat.move()
+print('------------------')
+
+panther = panther('Blacky', 7, 'meat')
+panther.eat()
+panther.sleep()
+panther.roar()
+panther.move()
+print('------------------')
+
+owl = Owl("Huntsman", 2, "worms", True)
+owl.eat()
+owl.sleep()
+owl.move()
+print(f'Turn head 360: {owl.turn_head_360}')
 print('------------------')
